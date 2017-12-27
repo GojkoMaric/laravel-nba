@@ -5,10 +5,27 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">All Teams</a>
-  
-</nav>
+<div class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">NBA</h1>
+            </div>
+        </div>
+        <div class="blog-masthead">
+            <div class="container">
+                <nav class="nav blog-nav alert-danger">
+                    <a class="nav-link active" href="/">All teams</a>
+                    @if (Auth::check())
+                        <a class="nav-link ml-auto" href="#">{{ Auth()->user()->name }}</a>
+                        <a class="nav-link ml-auto" href="/logout">Logout</a>
+                    @endif
+                    @if(!Auth::check())
+
+                    <a class="nav-link ml-auto" href="/register">Register</a>
+                    <a class="nav-link ml-auto" href="/login">Login</a>
+                    @endif
+                </nav>
+            </div>
+        </div>
     @yield('content')
 </body>
 </html>

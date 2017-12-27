@@ -17,5 +17,15 @@ Route::get('/teams/{id}', ['as' =>'single-team', 'uses'=>'TeamsController@show']
 
 Route::get('/players/{id}', ['as' =>'single-player', 'uses' =>'PlayersController@index']);
 
+Route::get('/register', 'RegisterController@create');
+
+Route::post('/register', 'RegisterController@store');
+
+Route::get('/logout', 'LoginController@destroy');
+
+Route::get('/login', 'LoginController@create');
+
+Route::post('/login', 'LoginController@store');
+
 
 
