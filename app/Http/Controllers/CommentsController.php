@@ -9,15 +9,18 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('forbiddenComment');
+    }
+    
     public function store($teamId)
     {
         $team = Team::find($teamId);
 
-        $team->comments()->create(request()->all());
-
         Comment::create([
             'content' => request('content'),
-            'user_id' => Auth()->user()->id,
+            'user_id' => auth()->user()->id,
             'team_id' => $teamId,
         ]);
 

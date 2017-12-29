@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use \App\User;
+use Illuminate\Support\Facades\Mail;
+use \App\Mail\VerifyUser;
+
 
 class RegisterController extends Controller
 {
@@ -33,7 +36,7 @@ class RegisterController extends Controller
 
         $user->save();
 
-        auth()->login($user);
+        Mail::to($user)->send(new VerifyUser($user));
 
         return redirect('/login');
     }
