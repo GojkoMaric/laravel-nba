@@ -27,5 +27,7 @@ Route::get('/login', 'LoginController@create')->name('login');
 
 Route::post('/login', 'LoginController@store');
 
+Route::post('teams/{teamId}/comments', ['as'=>'comments-team', 'uses' => 'CommentsController@store']);
+
 
 

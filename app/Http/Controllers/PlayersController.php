@@ -19,9 +19,5 @@ class PlayersController extends Controller
         return view('players', compact('player'));
     }
 
-    public function redirect()
-    {
-        return redirect('/login');
-    }
    
 }

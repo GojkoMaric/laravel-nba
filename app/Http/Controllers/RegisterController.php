@@ -35,6 +35,6 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect('/teams');
+        return redirect('/login');
     }
 }
