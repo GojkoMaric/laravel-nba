@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['as' => 'all-teams', 'uses'=>'TeamsController@index']);
+Route::get('/teams', ['as' => 'all-teams', 'uses'=>'TeamsController@index']);
 
 Route::get('/teams/{id}', ['as' =>'single-team', 'uses'=>'TeamsController@show']);
 
@@ -23,7 +23,7 @@ Route::post('/register', 'RegisterController@store');
 
 Route::get('/logout', 'LoginController@destroy');
 
-Route::get('/login', 'LoginController@create');
+Route::get('/login', 'LoginController@create')->name('login');
 
 Route::post('/login', 'LoginController@store');
 

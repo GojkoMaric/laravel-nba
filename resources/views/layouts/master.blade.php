@@ -13,7 +13,7 @@
         <div class="blog-masthead">
             <div class="container">
                 <nav class="nav blog-nav alert-danger">
-                    <a class="nav-link active" href="/">All teams</a>
+                    <a class="nav-link active" href="/teams">All teams</a>
                     @if (Auth::check())
                         <a class="nav-link ml-auto" href="#">{{ Auth()->user()->name }}</a>
                         <a class="nav-link ml-auto" href="/logout">Logout</a>
