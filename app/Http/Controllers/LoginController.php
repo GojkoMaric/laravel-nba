@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class LoginController extends Controller
 {
     public function __construct()
@@ -18,6 +20,13 @@ class LoginController extends Controller
 
     public function store()
     {
+        $user = User::where('email', request('email'))->where('is_verified', true)->first();
+
+        if(!$user)
+        {
+            return back()->withErrors(['message' => 'Please verify your account.']);
+        }
+
         if(!auth()->attempt(
             request(['email', 'password'])
         )){
@@ -33,5 +42,15 @@ class LoginController extends Controller
         auth()->logout();
 
         return redirect('/teams');
+    }
+
+    public function verify($id)
+    {
+        $user=User::find($id);
+        $user->is_verified=true;
+
+        $user->save();
+
+        return redirect('/login');
     }
 }

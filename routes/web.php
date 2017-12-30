@@ -29,5 +29,8 @@ Route::post('/login', 'LoginController@store');
 
 Route::post('teams/{teamId}/comments', ['as'=>'comments-team', 'uses' => 'CommentsController@store']);
 
+Route::get('/verify/{id}', 'LoginController@verify');
+
+Route::get('/comments/forbidden', 'CommentsController@forbidden')->name('forbiddenComment');
 
 
